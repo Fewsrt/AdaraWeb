@@ -1,5 +1,3 @@
-import * as firebase from 'firebase'
-
 const firebaseConfig = {
   apiKey: "AIzaSyAwylkbFj2ZDeLuyAHSrr854C9RgDkDpfY",
   authDomain: "adaralinebot-wkyk.firebaseapp.com",
@@ -9,6 +7,7 @@ const firebaseConfig = {
   appId: "1:705464554867:web:750cd9db9b9b3866bde106",
   measurementId: "G-5E90BKRCCX",
 };
+
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
@@ -42,11 +41,11 @@ liff.init(
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    document.getElementById("btnLogIn").style.display = "block";
-    document.getElementById("btnLogOut").style.display = "none";
-  } else {
     document.getElementById("btnLogIn").style.display = "none";
     document.getElementById("btnLogOut").style.display = "block";
+  } else {
+    document.getElementById("btnLogIn").style.display = "block";
+    document.getElementById("btnLogOut").style.display = "none";
   }
 });
 
@@ -70,7 +69,8 @@ function login() {
       alert(error.message);
     });
 }
-function logout(event) {
+
+function logout() {
   firebase
     .auth()
     .signOut()
