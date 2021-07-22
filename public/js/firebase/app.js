@@ -1,4 +1,6 @@
-var firebaseConfig = {
+import * as firebase from 'firebase'
+
+const firebaseConfig = {
   apiKey: "AIzaSyAwylkbFj2ZDeLuyAHSrr854C9RgDkDpfY",
   authDomain: "adaralinebot-wkyk.firebaseapp.com",
   projectId: "adaralinebot-wkyk",
@@ -13,8 +15,8 @@ firebase.analytics();
 var email = "";
 var password = "";
 
-function runApp() {
-  liff
+async function runApp() {
+  await liff
     .getProfile()
     .then((profile) => {
       document.getElementById("pictureUrl").src = profile.pictureUrl;
@@ -48,8 +50,8 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-function login(event) {
-  event.preventDefault();
+function login() {
+
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
