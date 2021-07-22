@@ -21,6 +21,10 @@ async function runApp() {
       document.getElementById("pictureUrl").src = profile.pictureUrl;
       document.getElementById("welcome").innerHTML =
         "<b>Welcome, </b> " + profile.displayName;
+      document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
+      document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
+      document.getElementById("statusMessage").innerHTML = '<b>StatusMessage:</b> ' + profile.statusMessage;
+      document.getElementById("getDecodedIDToken").innerHTML = '<b>Email:</b> ' + liff.getDecodedIDToken().email;
       email = liff.getDecodedIDToken().email;
       password = profile.userId;
     })
@@ -50,7 +54,6 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 function login() {
-
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
